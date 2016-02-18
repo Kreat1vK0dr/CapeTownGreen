@@ -12,18 +12,16 @@ var moveTaxi = function(from, to) {
 
 
 var num_words = ["slot-one-of-nine","slot-two-of-nine", "slot-three-of-nine", "slot-four-of-nine", "slot-five-of-nine", "slot-six-of-nine", "slot-seven-of-nine", "slot-eight-of-nine", "slot-nine-of-nine"];
-
+/*
 var getTaxiClasss = function (currentIndex) {
     var num_words = ["slot-one-of-nine","slot-two-of-nine", "slot-three-of-nine", "slot-four-of-nine", "slot-five-of-nine", "slot-six-of-nine", "slot-seven-of-nine", "slot-eight-of-nine", "slot-nine-of-nine"];
     return num_words[currentIndex - 1];
-}
+};
+*/
 
 var taxiLocationCounter = 1;
 //listen for the keydown event(
 body.onkeydown = function(e){
-    var x = e.keyCode;
-    displayMessage(/*keyCodeName(x)*/taxiLocationCounter+1);
-
     if (e.keyCode === 39) {
         if (taxiLocationCounter > 0 && taxiLocationCounter < 9) {
           taxiLocationCounter += 1;
@@ -43,6 +41,7 @@ body.onkeydown = function(e){
                   moveTaxi(num_words[taxiLocationCounter],num_words[taxiLocationCounter-1]);
             }
         }
+      displayMessage(keyCodeName(x) /*taxiLocationCounter*/);
     };
 
 var keyCodeName = function(keyCode) {
