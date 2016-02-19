@@ -32,15 +32,15 @@ describe("keyCodeName", function(){
 
 describe("createLocationClass", function(){
     it("should return `slot-one-of-nine` for 1", function(){
-        assert.equal("slot-one-of-nine", createLocactionClass(1));
+        assert.equal("slot-one-of-nine", createLocationClass(1));
     });
 
     it("should return `slot-five-of-nine` for 5", function(){
-        assert.equal("slot-five-of-nine", createLocactionClass(5));
+        assert.equal("slot-five-of-nine", createLocationClass(5));
     });
 
     it("should return `slot-nine-of-nine` for 9", function(){
-        assert.equal("slot-nine-of-nine", createLocactionClass(9));
+        assert.equal("slot-nine-of-nine", createLocationClass(9));
     });
 });
 
@@ -86,18 +86,6 @@ describe("TrafficLight", function(){
 
     it("makeOrange should make the trafficLight orange", function(){
         var tl = new TrafficLight(1);
-        tl.makeRed();
-
-        var element = document.querySelector(".one-of-nine");
-        assert.equal(false, element.classList.contains("lights-go"));
-        assert.equal(true, element.classList.contains("lights-stop"));
-        assert.equal(false, element.classList.contains("lights-slowdown"));
-        assert.equal("red", tl.color());
-
-    });
-
-    it("makeRed should make the trafficLight red", function(){
-        var tl = new TrafficLight(1);
         tl.makeOrange();
 
         var element = document.querySelector(".one-of-nine");
@@ -105,6 +93,18 @@ describe("TrafficLight", function(){
         assert.equal(false, element.classList.contains("lights-stop"));
         assert.equal(true, element.classList.contains("lights-slowdown"));
         assert.equal("orange", tl.color());
+
+    });
+
+    it("makeRed should make the trafficLight red", function(){
+        var tl = new TrafficLight(1);
+        tl.makeRed();
+
+        var element = document.querySelector(".one-of-nine");
+        assert.equal(false, element.classList.contains("lights-go"));
+        assert.equal(true, element.classList.contains("lights-stop"));
+        assert.equal(false, element.classList.contains("lights-slowdown"));
+        assert.equal("red", tl.color());
 
     });
 
