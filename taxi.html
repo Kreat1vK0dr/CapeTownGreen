@@ -12,35 +12,39 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/taxi.css">
+
     </head>
-    <body>
+    <body ondblclick="changeColorBody()">
 
     <main>
 
       <div class="road">
 
-      <div class="queue queue-first">
-        <div id="queue-five-rand" class="queue-count">4</div>
+      <!-- <div id = "test-resize">
+         -->
+      <div class="queue queue-first inactive" onclick = "changeColorFive()">
+        <div id="queue-five-rand"  class="queue-count">0</div>
         <img src="./img/passenger.png" width="25" height="25">
       </div>
 
-      <!--
-      <div class="queue queue-second">
-        <div id="queue-ten-rand"  class="queue-count">4</div>
+
+      <div class="queue queue-second inactive" onclick = "changeColorTen()">
+        <div id="queue-ten-rand"  class="queue-count">0</div>
         <img src="./img/passenger.png" width="25" height="25">
       </div>
 
-      <div class="queue queue-third">
-        <div id="queue-twenty-rand" class="queue-count">4</div>
+      <div class="queue queue-third inactive" onclick = "changeColorTwenty()">
+        <div id="queue-twenty-rand" class="queue-count">0</div>
         <img src="./img/passenger.png" width="25" height="25">
       </div>
-      -->
+
 
       <div class="taxi slot-one-of-nine">
         <div class="wheels"></div>
-        <div class="passengers"></div>
+        <div class="passengers five-rand">0</div>
+        <div class="passengers ten-rand">0</div>
+        <div class="passengers twenty-rand">0</div>
       </div>
-
 
 
         <div class="robot one-of-nine lights-go">
@@ -130,7 +134,9 @@
     </main>
 
     </body>
-    <script src="support.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
+    <script src="support.js" charset="utf-8"></script>
+
+
 
 </html>

@@ -156,47 +156,65 @@ nav a:hover {
 
 /*Crazy Taxi*/
 
+
+
 body {
   padding: 10em 4em 1em 4em;
 }
 
 /*q*/
 
+.active {
+  color: black;
+}
+
+.inactive {
+  color: white;
+}
+
 .queue {
   position: absolute;
-  left: 0;
+  left: -1.8em;
   top: -4.5em;
   font-size: 2em;
   text-align: center;
 }
 
 .queue-second {
-  left: 3%;
-  background-color:
+  left: -.25%;
+  /*background-color:*/
 }
 
 .queue-third {
-  left: 6%;
+  left: 5%;
 }
 
 .queue-count {
   padding: 0.25em;
   position: relative;
-  background-color: #999;
-  color: #fff;
+  /*background-color: #999;*/
+  /*color: #fff;*/
   margin-bottom: 0.4em;
 }
 
 .queue-count:after {
   content: "";
   height: 0;
-  border-top: solid 0.25em #999;
+  border-top: solid 0.25em #fff;
   border-right: solid 0.25em #fff;
   border-bottom: solid 0.25em #fff;
   border-left: solid 0.25em #fff;
-  position: absolute;
+  position:absolute;
   bottom: -0.5em;
-  left: 0.25em;
+  left: 0.5em;
+}
+
+.queue-first .queue-count {
+  background-color: #e64a5c;
+}
+
+.queue-first .queue-count:after {
+  border-top-color: #e64a5c;
 }
 
 .queue-second .queue-count {
@@ -208,19 +226,21 @@ body {
 }
 
 .queue-third .queue-count {
-  background-color: rgb(173, 123, 76);
+  background-color: #cce64a;
 }
 
 .queue-third .queue-count:after {
-  border-top-color: rgb(173, 123, 76);
+  border-top-color: #cce64a;
 }
 
 .queue-first:after {
   font-size: 0.5em;
   position: absolute;
-  left: 0.3em;
+  left: 0.5em;
   bottom: -1.5em;
   content: "R5";
+  /*color: white;*/
+  background-color: #e64a5c;
 }
 
 .queue-second:after {
@@ -229,7 +249,8 @@ body {
   left: 0;
   bottom: -1.5em;
   content: "R10";
-  color: rgb(72,	182, 131);
+  /*color: white;*/
+  background-color: rgb(72,	182, 131);
 }
 
 .queue-third:after {
@@ -238,7 +259,8 @@ body {
   left: 0;
   bottom: -1.5em;
   content: "R20";
-  color: rgb(173, 123, 76);
+  /*color: white;*/
+  background-color: #cce64a;
 }
 
 /*road*/
@@ -466,11 +488,24 @@ body {
 }
 
 .passengers {
-  position: absolute;
+  position: absolute;;
   top: 0;
-  left: 40%;
-  color: #fff;
-  font-size: 1.5em;
+  /*left: 10%;
+  color: #fff;*/
+  font-size: 1em;
+}
+
+.five-rand {
+  left: 10%;
+  color: #e64a5c;
+}
+.ten-rand {
+  left: 38%;
+  color:  rgb(72,	182, 131);
+}
+.twenty-rand {
+  left: 66%;
+  color: #cce64a;
 }
 
 /*taxi slots*/
