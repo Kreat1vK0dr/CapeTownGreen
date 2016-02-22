@@ -8,24 +8,6 @@ var moneyIndex = {
     2 : 20
   };
 
-  var changeTaxiPassengers = function (array) {
-    displayTaxiPassengerCountFive(array[0]);
-    displayTaxiPassengerCountTen(array[1]);
-    displayTaxiPassengerCountTwenty(array[2]);
-  };
-
-  var moveTaxi = function(from, to) {
-      var taxi = document.querySelector('.taxi');
-      taxi.classList.remove(from);
-      taxi.classList.add(to);
-  };
-
-  var displayMessage = function(text){
-      var message = document.getElementById("message");
-      message.innerHTML = text;
-  };
-
-
 var passengerList = function(){
 
   var maxNumber = randomNumber(40);
@@ -128,7 +110,7 @@ function TrafficLight(x) {
   // console.log(className);
   var trafficLightElement = document.querySelector(className);
   // console.log(trafficLightElement.classList);
-  // test = trafficLightElement.classList;
+  test = trafficLightElement.classList;
   this.makeGreen = function () {
     trafficLightElement.classList.remove("lights-stop");
     trafficLightElement.classList.remove("lights-slowdown");
@@ -291,7 +273,7 @@ var displayQueueCountTwenty = function(val){
 };
 
 var displayQueues = function (array) {
-  if (five===true && typeof array[0]==='number') {
+  if (five===true) {
   displayQueueCountFive(array[0]);
   fiveCount = array[0];
   fiveRem = array[0];
@@ -302,8 +284,8 @@ var displayQueues = function (array) {
   fiveRem = 0;
   }
 
-if (ten===true && (typeof array[0]==='number' && typeof array[1]==='number')) {
-  if (five===true ) {
+if (ten===true) {
+  if (five===true) {
   displayQueueCountTen(array[1]);
   tenCount = array[1];
   tenRem = array[1];
@@ -312,18 +294,17 @@ if (ten===true && (typeof array[0]==='number' && typeof array[1]==='number')) {
   tenCount = array[0];
   tenRem = array[0];
 }
-} else if (five===true){
-  displayQueueCountTen(0);
+} else if (five===true){displayQueueCountTen(0);
   tenCount = 0;
   tenRem = 0;
 }
 
-if (twenty===true && five===true && (typeof array[1]==='number' && typeof array[2]==='number')) {
-  if (ten===true) {
+if (twenty===true) {
+  if (ten===true && five===true) {
     displayQueueCountTwenty(array[2]);
     twentyCount = array[2];
     twentyRem = array[2];
-  } else if(typeof array[1]==='number') {
+  } else {
       displayQueueCountTwenty(array[1]);
       twentyCount = array[1];
       twentyRem = array[1];
@@ -386,18 +367,6 @@ var displayTaxiPassengerCountTwenty = function(count){
     q.innerHTML = count;
 };
 
-$(document).ready(function(){
-    $('#resume').hide();
-    $('#pause').click(function(){
-      $('#resume').show();
-      $('#pause').hide();
-    });
-    $('#resume').click(function(){
-      $('#pause').show();
-      $('#resume').hide();
-    });
-});
-
 // displayMessage("Press R to randomly fill the queue with passengers");
 var taxiCountFive =0;
 var taxiCountTen = 0;
@@ -405,126 +374,64 @@ var taxiCountTwenty = 0;
 
 console.log(fiveRem);
 
-// var count;
-// function countDown(x) {
-//   count = x*100;
-// }
-//
-// // countDown(15);
-//
-// function startTimer() {
-// var counter = setInterval(timer, 10); //10 will  run it every 100th of a second
-// countDown(15);
-// function timer() {
-//     if (count <= 0)
-//     {
-//         clearInterval(counter);
-//         return;
-//      }
-//      count--;
-//   var secmilli = count/100;
-//   var sm = secmilli.toString();
-//   var split = sm.split(".");
-//   if (split[0]<10) {
-//     split[0] = '0'+split[0];
-//   }
-//   if (split[1]<10 && split[1].length<2) {
-//     split[1] = split[1]+"0";
-//   }
-//   if (typeof split[1]=== 'undefined') {
-//     split[1] = "00";
-//   }
-//
-//   // if (split[1]<10) {
-//   //   split[1] = split[1]+"0";
-//   // }
-//   if (typeof split[1]=== 'undefined') {
-//     split[1] = "00";
-//   }
-//      document.getElementById("timer").innerHTML=split[0]+":"+split[1];
-// }
-// }
 
-
-// startTimer();
-
-
-// startTimer();
-
-// alert("are you ready to play?");
-$('#timer').hide();
-displayMessage("Ready to ride? Press the space-bar for some commuters!");{}
 
 body.onkeydown = function(e){
   // console.log(redLightBehind());
   // console.log(document.querySelector('.taxi').classList
-  var loco1 = 3;
-  var loco2 = 5;
-  var loco3 = 9;
+
   var trafficLight = new TrafficLight(taxiLocationCounter);
-  var tl1 = new TrafficLight(loco1);
-  var tl2 = new TrafficLight(loco2);
-  var tl3 = new TrafficLight(loco3);
-if (e.keyCode===32) {
+if(e.keyCode===82) {
 createQueues();
-setTimeout(function(){displayMessage("Start the timer whenever you're ready and drop-off all your passengers as fast as you can!");},2000);
+
+  displayMessage(e.keyCode);
+} else {
+  displayMessage("error");
 }
-displayMessage("Great! Now you have some passengers!");
 
-// if (document.querySelector('.taxi').classList.contains('slot-one-of-nine')) {
-  if (e.keyCode===107 || e.keyCode===187) {
-
-    if (elementQFirst.classList.contains('active')) {
-      if (fiveCount>0) {
-      taxiCountFive++;
-      fiveCount--;
-      console.log(fiveRem);
-      }
-}   else if (elementQSecond.classList.contains('active')) {
-      if (tenCount>0) {
-      taxiCountTen++;
-      tenCount--;
-      console.log(tenRem);
+if (document.querySelector('.taxi').classList.contains('slot-one-of-nine')) {
+  if (elementQFirst.classList.contains('active')) {
+    if (e.keyCode===107 && fiveCount>0) {
+    taxiCountFive++;
+    fiveCount--;
+    displayTaxiPassengerCountFive(taxiCountFive);
+    displayQueueCountFive(fiveCount);
+    console.log(fiveRem);
+  } if (e.keyCode===109 && fiveCount<fiveRem) {
+    taxiCountFive--;
+    fiveCount++;
+    displayTaxiPassengerCountFive(taxiCountFive);
+    displayQueueCountFive(fiveCount);
   }
-} else if (elementQThird.classList.contains('active')) {
-    if (twentyCount>0) {
+} else if (elementQSecond.classList.contains('active')) {
+  if (e.keyCode===107 && tenCount>0) {
+  taxiCountTen++;
+  tenCount--;
+  displayTaxiPassengerCountTen(taxiCountTen);
+  displayQueueCountTen(tenCount);
+  console.log(twentyRem);
+} if (e.keyCode===109 && tenCount<tenRem) {
+  taxiCountTen--;
+  tenCount++;
+  displayTaxiPassengerCountTen(taxiCountTen);
+  displayQueueCountTen(tenCount);
+}
+  } else if (elementQThird.classList.contains('active')) {
+    if (e.keyCode===107 && twentyCount>0) {
     taxiCountTwenty++;
     twentyCount--;
-
+    displayTaxiPassengerCountTwenty(taxiCountTwenty);
+    displayQueueCountTwenty(twentyCount);
     console.log(twentyRem);
-
-    }
-  }
-} else if (e.keyCode===109 || e.keyCode===189) {
-    if (elementQFirst.classList.contains('active')) {
-        if (fiveCount<fiveRem) {
-            taxiCountFive--;
-            fiveCount++;
-
-          }
-  } if (elementQSecond.classList.contains('active')) {
-      if (tenCount<tenRem) {
-          taxiCountTen--;
-          tenCount++;
-
-  }
-} if (elementQThird.classList.contains('active')) {
-   if (twentyCount<twentyRem) {
+  } if (e.keyCode===109 && twentyCount<twentyRem) {
     taxiCountTwenty--;
     twentyCount++;
+    displayTaxiPassengerCountTwenty(taxiCountTwenty);
+    displayQueueCountTwenty(twentyCount);
   }
 }
 }
- displayTaxiPassengerCountFive(taxiCountFive);
-displayQueueCountFive(fiveCount);
-displayTaxiPassengerCountTen(taxiCountTen);
-displayQueueCountTen(tenCount);
-displayTaxiPassengerCountTwenty(taxiCountTwenty);
-displayQueueCountTwenty(twentyCount);
 
-if (fiveRem===taxiCountFive && tenRem===taxiCountTen && twentyRem===taxiCountTen) {
-  displayMessage("Your taxi is full! Now you better get your passengers to their destinations before the time runs out. Press tab to skip a red-light, but beware you could get a fine!");
-}
   if (e.keyCode===38) {
     if (lightcolor<3) {
       lightcolor++;
@@ -535,22 +442,16 @@ if (fiveRem===taxiCountFive && tenRem===taxiCountTen && twentyRem===taxiCountTen
     lightcolor--;
     lightposition(trafficLight, lightcolor);
     }
-  }
-if (timer.started()===true & timer.string()!=="00:00") {
-  if (e.keyCode === 39  ) {
-      if (taxiLocationCounter>0 && taxiLocationCounter < 3) {
+  } else if (e.keyCode === 39) {
+
+
+      if (taxiLocationCounter < 9) {
         if(canIMoveForward(trafficLight)===true) {
         moveForward();
         // console.log(test);
         resetLightCounter(taxiLocationCounter);
       }
-    } else if (taxiLocationCounter>=3 && taxiLocationCounter<5 && taxiCountFive===0 && canIMoveForward(trafficLight)===true) {
-        moveForward();
-        resetLightCounter(taxiLocationCounter);
-      } else if (taxiLocationCounter>=5 && taxiLocationCounter<9 && taxiCountTen===0 && canIMoveForward(trafficLight)===true) {
-        moveForward();
-        resetLightCounter(taxiLocationCounter);
-      } else if (taxiLocationCounter===9 && taxiCountTwenty===0 && canIMoveForward(trafficLight)===true) {
+    } else if (canIMoveForward(trafficLight)===true) {
         taxiLocationCounter = 1;
         moveTaxi(position[position.length - 1], position[0]);
       }
@@ -566,134 +467,7 @@ if (timer.started()===true & timer.string()!=="00:00") {
       moveTaxi(position[0],position[8]);
     }
   }
-
-
   console.log(document.querySelector('.taxi').classList);
       // console.log(test);
       // displayMessage(createLocationClass(taxiLocationCounter)+" "+lightcolor);//createTrafficLightClass(taxiLocationCounter) //createLocationClass(taxiLocationCounter) /*keyCodeName(x)*/ )//taxiLocationCounter //lightcolor);
-} if (taxiLocationCounter===3) {
-  if (taxiCountFive>0) {
-   setTimeout(function(){tl1.makeOrange();},500);
-   setTimeout(function(){tl1.makeRed();},1000);
-} else {
-  tl1.makeGreen();
-}
-}
- if (taxiLocationCounter===5) {
-   if (taxiCountTen>0) {
-   setTimeout(function(){tl2.makeOrange();},500);
-   setTimeout(function(){tl2.makeRed();},1000);
-} else {
-  tl2.makeGreen();
-}
-}
- if (taxiLocationCounter===5) {
-   if (taxiCountTwenty>0) {
-   setTimeout(function(){tl3.makeOrange();},500);
-   setTimeout(function(){tl3.makeRed();},1000);
-} else {
-  tl3.makeGreen();
-}
-}
-}
-
-
-
-function Timer(x) {
-  var Finish = x;
-  var interval = 10;
-  var running = false;
-  var CurrentTime = new Date();
-  var EndTime = new Date();
-  var pause = $('#pause');
-  var resume = $('#resume');
-  var stop = $('#stop');
-  var timer = $('#timer');
-  var seconds = 0;
-  var milliseconds = 0;
-  var test;
-
-  var updateTimer = function() {
-    if(CurrentTime + interval < EndTime) {
-      setTimeout(updateTimer, interval);
-    } else {
-      timer.html("00:00");
-    }
-
-    if(running) {
-        CurrentTime += interval;
-        }
-
-    var time = new Date();
-    time.setTime( EndTime - CurrentTime );
-    var seconds = time.getSeconds();
-    var milliseconds = time.getMilliseconds();
-    milliseconds = milliseconds.toString();
-    if (milliseconds.length<3) {
-      milliseconds = "0"+milliseconds;
-    }
-    milliseconds = milliseconds.substring(0,2);
-    milliseconds = Number(milliseconds);
-    timer.html((seconds < 10 ? '0' : '') + seconds+ ':'+ (milliseconds < 10 ? '0' : '') + milliseconds );
-    test = (seconds < 10 ? '0' : '') + seconds+ ':'+ (milliseconds < 10 ? '0' : '') + milliseconds;
-    test = test.toString();
-
-    // if (CurrentTime = EndTime) {
-    //   running = false;
-    // }
 };
-
-  this.string = function() {
-    return test;
-  };
-
-  this.stop = function() {
-    if ($('#resume').is(":visible")===true) {
-      running = true;
-      pause.show();
-      resume.hide();
-      CurrentTime = EndTime - interval;
-      console.log($('#resume').is(":visible"));
-      running = false;
-    }
-    $('#timer').hide();
-    $('.message').show();
-    CurrentTime = EndTime - interval;
-    running = false;
-    // if (CurrentTime = EndTime - interval) {
-    //   running = false;
-    // }
-  };
-
-  this.pause = function() {
-      running = false;
-      pause.hide();
-      resume.show();
-  };
-
-  this.resume = function() {
-      running = true;
-      pause.show();
-      resume.hide();
-  };
-
-  this.start = function() {
-      running = true;
-      finish = Finish;
-      CurrentTime = ( new Date() ).getTime();
-      EndTime = ( new Date() ).getTime() + finish;
-      console.log(this.started());
-      updateTimer();
-      $('#timer').show();
-      $('.message').hide();
-      console.log(this.string());
-    };
-
-  this.started = function() {
-    return running;
-  };
-}
-
-var timer = new Timer(30000);
-console.log(timer.started());
-console.log(timer.string());

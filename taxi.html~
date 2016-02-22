@@ -13,27 +13,10 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/taxi.css">
 
-        <script src="jquery-1.12.0.js"></script>
-        <script src="jquery-blink.js"></script>
-
     </head>
     <body ondblclick="changeColorBody()">
 
     <main>
-
-      <div class="message">
-        <p id="message">Messages goes here...</p>
-      </div>
-
-    <div class= "buttons" style="margin: 0 auto; text-align: center;">
-      <button class = "button" id="start" type="button" onclick="timer.start()">Let's Go!</button>
-      <button class = "button" id="pause" type="button" onclick="timer.pause()">Pause</button>
-      <button class = "button" id="resume" type="button" onclick="timer.resume()">Resume</button>
-      <button class = "button" id="stop" type="button" onclick="timer.stop()">Stop</button>
-    </div>
-
-      <div id="timer"></div>
-
 
       <div class="road">
 
@@ -78,7 +61,6 @@
             <div class="slowdown">&bull;</div>
             <div class="go">&bull;</div>
           </div>
-
         </div>
 
         <div class="robot three-of-nine lights-go">
@@ -86,10 +68,6 @@
             <div class="stop">&bull;</div>
             <div class="slowdown">&bull;</div>
             <div class="go">&bull;</div>
-          </div>
-          <div class="queue queue-first inactive" onclick = "changeColorFive()">
-            <!-- <div id="queue-five-rand"  class="queue-count">0</div> -->
-            <img src="./img/passenger.png" width="25" height="25">
           </div>
         </div>
 
@@ -106,10 +84,6 @@
             <div class="stop">&bull;</div>
             <div class="slowdown">&bull;</div>
             <div class="go">&bull;</div>
-          </div>
-          <div class="queue queue-second inactive" onclick = "changeColorTen()">
-            <!-- <div id="queue-ten-rand"  class="queue-count">0</div> -->
-            <img src="./img/passenger.png" width="25" height="25">
           </div>
         </div>
 
@@ -143,10 +117,6 @@
             <div class="slowdown">&bull;</div>
             <div class="go">&bull;</div>
           </div>
-          <div class="queue queue-third inactive" onclick = "changeColorTwenty()">
-            <!-- <div id="queue-twenty-rand" class="queue-count">0</div> -->
-            <img src="./img/passenger.png" width="25" height="25">
-          </div>
         </div>
 
 
@@ -154,20 +124,18 @@
 
       <div class="signs">
           <div class="sign departure">Waterfront</div>
-          <div class="sign stop1">Foreshore</div>
-          <div class="sign stop2">Gardens</div>
           <div class="sign destination">Cape Town Station</div>
       </div>
 
-
+      <div class="message">
+        <p id="message">Messages goes here...</p>
+      </div>
 
     </main>
 
     </body>
     <script src="app.js" charset="utf-8"></script>
     <script src="support.js" charset="utf-8"></script>
-
-
 
 
 

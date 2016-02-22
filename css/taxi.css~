@@ -268,10 +268,8 @@ body {
 .road {
   background-color: #46454b;
   height: 4em;
-  position: absolute;
+  position: relative;
   margin-bottom: 1em;
-  width: 68em;
-  top: 55%;
 }
 
 .road:before {
@@ -631,21 +629,11 @@ body {
   position: absolute;;
   display: inline-block;
   text-align: center;
-  top: 14em;
 }
 
 .departure {
   left: 0;
   width: 15%;
-}
-
-.stop1 {
-  left: 22%;
-  width: 10%;
-}
-.stop2 {
-  left: 45%;
-  width: 10%;
 }
 
 .destination {
@@ -654,7 +642,7 @@ body {
 }
 
 .message {
-  position: absolute;
+  position: absolute;;
   left: 25%;
   right: 25%;
   border: solid 2px rgb(72,	182, 131);
@@ -664,7 +652,6 @@ body {
   font-size: 1.5em;
   background-color: rgb(72,	182, 131);
   color: #fff;
-  top: 10%;
 }
 
 /* ==========================================================================
@@ -869,73 +856,4 @@ body {
     h3 {
         page-break-after: avoid;
     }
-}
-
-#timer {
-  /*display:inline-block;*/
-    font: "Arial";
-    font-size: 3em;
-    background-color: red;
-    color: white;
-    /*float:right;*/
-    position: absolute;
-    top: 10%;
-    left: 40%;
-    right: 40%;
-    float: right;
-    text-align: center;
-    font-size: 2em;
-    padding: 0.5em;
-    border-radius: 100%;
-}
-
-.robot .queue-first {
-  top: -3em;
-}
-.robot .queue-second {
-  top: -3em;
-  left: -2em;
-}
-.robot .queue-third {
-  top: -3em;
-  left: -2em;
-}
-
-.button {
-  /*margin: 0 auto;*/
-  /*width: 100px;*/
-  position: relative;
-  /*left: 100%;*/
-  /*right: 50%;*/
-
-
-  /*float: right;*/
-}
-.buttons {
-  position: absolute;
-  display: inline-block;
-  top: 3%;
-  text-align: center;
-  left: 35%;
-  right: 35%;
-
-}
-/*#start {
-    left: 45%;
-}
-#pause #resume {
-  left: 55%;
-}
-
-#stop {
-  left: 60%;
-}*/
-.taxiroad {
-  position: absolute;
-  /*float:right;*/
-  top: 60%;
-  width: 68em;
-  height:30em;
-
-
 }
