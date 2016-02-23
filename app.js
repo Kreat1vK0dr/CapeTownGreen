@@ -1,7 +1,7 @@
 var randomNumber = function(range){
   return Math.floor(Math.random() * range);
 };
-
+// something
 var moneyIndex = {
     0 : 5,
     1 : 10,
