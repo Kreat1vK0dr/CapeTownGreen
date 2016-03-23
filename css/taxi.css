@@ -631,7 +631,7 @@ body {
   position: absolute;;
   display: inline-block;
   text-align: center;
-  top: 14em;
+  top: 18em;
 }
 
 .departure {
@@ -644,7 +644,7 @@ body {
   width: 10%;
 }
 .stop2 {
-  left: 45%;
+  left: 40%;
   width: 10%;
 }
 

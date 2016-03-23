@@ -471,23 +471,23 @@ setTimeout(function(){displayMessage("Start the timer whenever you're ready and 
 }
 displayMessage("Great! Now you have some passengers!");
 
-// if (document.querySelector('.taxi').classList.contains('slot-one-of-nine')) {
+// if (document.querySelector('.taxi').classList.contains('slot-one-of-nine'))
   if (e.keyCode===107 || e.keyCode===187) {
 
     if (elementQFirst.classList.contains('active')) {
-      if (fiveCount>0) {
+      if (fiveCount>0 && taxiLocationCounter===1) {
       taxiCountFive++;
       fiveCount--;
       console.log(fiveRem);
       }
 }   else if (elementQSecond.classList.contains('active')) {
-      if (tenCount>0) {
+      if (tenCount>0 && taxiLocationCounter===1) {
       taxiCountTen++;
       tenCount--;
       console.log(tenRem);
   }
 } else if (elementQThird.classList.contains('active')) {
-    if (twentyCount>0) {
+    if (twentyCount>0 && taxiLocationCounter===1) {
     taxiCountTwenty++;
     twentyCount--;
 
@@ -497,25 +497,32 @@ displayMessage("Great! Now you have some passengers!");
   }
 } else if (e.keyCode===109 || e.keyCode===189) {
     if (elementQFirst.classList.contains('active')) {
-        if (fiveCount<fiveRem) {
+        if (fiveCount<fiveRem && (taxiLocationCounter===1 || taxiLocationCounter===3)) {
             taxiCountFive--;
             fiveCount++;
-
+            if (taxiCountFive===0 && taxiLocationCounter===3) {
+              trafficLight.makeGreen();
+            }
           }
-  } if (elementQSecond.classList.contains('active')) {
-      if (tenCount<tenRem) {
+  } else if (elementQSecond.classList.contains('active')) {
+      if (tenCount<tenRem && (taxiLocationCounter===1 || taxiLocationCounter===5)) {
           taxiCountTen--;
           tenCount++;
-
+          if (taxiCountTen===0 && taxiLocationCounter===5) {
+            trafficLight.makeGreen();
+          }
   }
-} if (elementQThird.classList.contains('active')) {
-   if (twentyCount<twentyRem) {
+} else if (elementQThird.classList.contains('active')) {
+   if (twentyCount<twentyRem && (taxiLocationCounter===1 || taxiLocationCounter===9)) {
     taxiCountTwenty--;
     twentyCount++;
+    if (taxiCountTwenty===0 && taxiLocationCounter===9) {
+      trafficLight.makeGreen();
+    }
   }
 }
 }
- displayTaxiPassengerCountFive(taxiCountFive);
+displayTaxiPassengerCountFive(taxiCountFive);
 displayQueueCountFive(fiveCount);
 displayTaxiPassengerCountTen(taxiCountTen);
 displayQueueCountTen(tenCount);
@@ -537,24 +544,37 @@ if (fiveRem===taxiCountFive && tenRem===taxiCountTen && twentyRem===taxiCountTen
     }
   }
 if (timer.started()===true & timer.string()!=="00:00") {
-  if (e.keyCode === 39  ) {
-      if (taxiLocationCounter>0 && taxiLocationCounter < 3) {
-        if(canIMoveForward(trafficLight)===true) {
-        moveForward();
-        // console.log(test);
-        resetLightCounter(taxiLocationCounter);
-      }
-    } else if (taxiLocationCounter>=3 && taxiLocationCounter<5 && taxiCountFive===0 && canIMoveForward(trafficLight)===true) {
-        moveForward();
-        resetLightCounter(taxiLocationCounter);
-      } else if (taxiLocationCounter>=5 && taxiLocationCounter<9 && taxiCountTen===0 && canIMoveForward(trafficLight)===true) {
-        moveForward();
-        resetLightCounter(taxiLocationCounter);
-      } else if (taxiLocationCounter===9 && taxiCountTwenty===0 && canIMoveForward(trafficLight)===true) {
-        taxiLocationCounter = 1;
-        moveTaxi(position[position.length - 1], position[0]);
-      }
-    } else if (e.keyCode === 37) {
+  if (e.keyCode === 39) {
+      if (taxiLocationCounter<=9 && canIMoveForward(trafficLight)===true) {
+        if (taxiLocationCounter===2 && taxiCountFive!==0) {
+          // setTimeout(function(){tl1.makeOrange();},500);
+          tl1.makeOrange();
+          setTimeout(function(){tl1.makeRed();},500);
+          moveForward();
+          resetLightCounter(taxiLocationCounter);
+        } else if (taxiLocationCounter===4 && taxiCountTen!==0) {
+          // setTimeout(function(){tl2.makeOrange();},500);
+          tl2.makeOrange();
+          setTimeout(function(){tl2.makeRed();},500);
+          moveForward();
+          resetLightCounter(taxiLocationCounter);
+        } else if (taxiLocationCounter===8 && taxiCountTwenty!==0) {
+          // setTimeout(function(){tl3.makeOrange();},500);
+          tl3.makeOrange();
+          setTimeout(function(){tl3.makeRed();},500);
+          moveForward();
+          resetLightCounter(taxiLocationCounter);
+        } else if (taxiLocationCounter===9) {
+                    // trafficLight.makeGreen();
+                    taxiLocationCounter = 1;
+                    moveTaxi(position[position.length - 1], position[0]);
+                    resetLightCounter(taxiLocationCounter);
+       } else {
+                moveForward();
+                resetLightCounter(taxiLocationCounter);
+       }
+    }
+  } else if (e.keyCode === 37) {
 
       if (taxiLocationCounter > 1) {
         if (canIMoveBackward()===true) {
@@ -566,36 +586,37 @@ if (timer.started()===true & timer.string()!=="00:00") {
       moveTaxi(position[0],position[8]);
     }
   }
+}
+}
 
 
   console.log(document.querySelector('.taxi').classList);
       // console.log(test);
       // displayMessage(createLocationClass(taxiLocationCounter)+" "+lightcolor);//createTrafficLightClass(taxiLocationCounter) //createLocationClass(taxiLocationCounter) /*keyCodeName(x)*/ )//taxiLocationCounter //lightcolor);
-} if (taxiLocationCounter===3) {
-  if (taxiCountFive>0) {
-   setTimeout(function(){tl1.makeOrange();},500);
-   setTimeout(function(){tl1.makeRed();},1000);
-} else {
-  tl1.makeGreen();
-}
-}
- if (taxiLocationCounter===5) {
-   if (taxiCountTen>0) {
-   setTimeout(function(){tl2.makeOrange();},500);
-   setTimeout(function(){tl2.makeRed();},1000);
-} else {
-  tl2.makeGreen();
-}
-}
- if (taxiLocationCounter===5) {
-   if (taxiCountTwenty>0) {
-   setTimeout(function(){tl3.makeOrange();},500);
-   setTimeout(function(){tl3.makeRed();},1000);
-} else {
-  tl3.makeGreen();
-}
-}
-}
+// } if (taxiLocationCounter===3) {
+//   if (taxiCountFive>0) {
+//    setTimeout(function(){tl1.makeOrange();},500);
+//    setTimeout(function(){tl1.makeRed();},1000);
+// } else {
+//   tl1.makeGreen();
+// }
+// }
+//  if (taxiLocationCounter===5) {
+//    if (taxiCountTen>0) {
+//    setTimeout(function(){tl2.makeOrange();},500);
+//    setTimeout(function(){tl2.makeRed();},1000);
+// } else {
+//   tl2.makeGreen();
+// }
+// }
+//  if (taxiLocationCounter===5)
+//    if (taxiCountTwenty>0) {
+//    setTimeout(function(){tl3.makeOrange();},500);
+//    setTimeout(function(){tl3.makeRed();},1000);
+// } else {
+//   tl3.makeGreen();
+// }
+
 
 
 
@@ -613,9 +634,11 @@ function Timer(x) {
   var milliseconds = 0;
   var test;
 
+  var myTimerToken = null;
+
   var updateTimer = function() {
     if(CurrentTime + interval < EndTime) {
-      setTimeout(updateTimer, interval);
+      myTimerToken = setTimeout(updateTimer, interval);
     } else {
       timer.html("00:00");
     }
@@ -648,18 +671,23 @@ function Timer(x) {
   };
 
   this.stop = function() {
-    if ($('#resume').is(":visible")===true) {
-      running = true;
-      pause.show();
-      resume.hide();
-      CurrentTime = EndTime - interval;
-      console.log($('#resume').is(":visible"));
-      running = false;
-    }
-    $('#timer').hide();
-    $('.message').show();
-    CurrentTime = EndTime - interval;
-    running = false;
+
+
+    clearTimeout(myTimerToken);
+    timer.html("00:00");
+    // ic($('#resume').is(":visible")===true) {
+    //   running = true;
+    //   pause.show();
+    //   resume.hide();
+    //
+    //   CurrentTime = EndTime - interval;
+    //   console.log($('#resume').is(":visible"));
+    //   running = false;
+    // }
+    // // $('#timer').hide();
+    // // $('.message').show();
+    // CurrentTime = EndTime - interval;
+    // running = false;
     // if (CurrentTime = EndTime - interval) {
     //   running = false;
     // }
@@ -694,6 +722,6 @@ function Timer(x) {
   };
 }
 
-var timer = new Timer(30000);
+var timer = new Timer(60000);
 console.log(timer.started());
 console.log(timer.string());
