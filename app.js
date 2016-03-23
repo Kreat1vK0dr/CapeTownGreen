@@ -198,9 +198,9 @@ var lightposition = function(object, x) {
 };
 
 var canIMoveForward = function(object) {
-        if (object.color()==="green" ||object.color()==="orange") {
+        if (object.color()==="green") {
                       return true;
-                } else if (object.color()==="red") {
+                } else if (object.color()==="red"  || object.color()==="orange") {
                   return false;
                 }
               };
@@ -445,8 +445,8 @@ console.log(fiveRem);
 // }
 // }
 
-
 // alert("are you ready to play?");
+
 $('#timer').hide();
 displayMessage("Ready to ride? Press the space-bar for some commuters!");{}
 
@@ -564,7 +564,7 @@ if (timer.started()===true & timer.string()!=="00:00") {
                     taxiLocationCounter = 1;
                     moveTaxi(position[position.length - 1], position[0]);
                     resetLightCounter(taxiLocationCounter);
-       } else {
+       } else if (canIMoveForward(tl1)===true && canIMoveForward(tl2)===true && canIMoveForward(tl3)===true){
                 moveForward();
                 resetLightCounter(taxiLocationCounter);
        }
