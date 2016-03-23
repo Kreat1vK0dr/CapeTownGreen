@@ -446,11 +446,6 @@ console.log(fiveRem);
 // }
 
 
-// startTimer();
-
-
-// startTimer();
-
 // alert("are you ready to play?");
 $('#timer').hide();
 displayMessage("Ready to ride? Press the space-bar for some commuters!");{}
